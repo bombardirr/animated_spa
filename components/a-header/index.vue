@@ -1,22 +1,20 @@
 <script lang="ts" setup>
-const links = {
-  pageZero: "/",
-  pageOne: "/pageOne",
-  pageTwo: "/pageTwo",
-  pageThree: "/pageThree",
-  pageFour: "/pageFour",
-};
+const links = [
+  { to: "/", title: "Home" },
+  { to: "/pageOne", title: "PageOne" },
+  { to: "/pageTwo", title: "PageTwo" },
+  { to: "/pageThree", title: "PageThree" },
+  { to: "/pageFour", title: "PageFour" },
+];
 </script>
 
 <template>
   <div class="header">
     <nav>
       <ul>
-        <li><NuxtLink :to="links.pageZero">HOME</NuxtLink></li>
-        <li><NuxtLink :to="links.pageOne">PAGE 1</NuxtLink></li>
-        <li><NuxtLink :to="links.pageTwo">PAGE 2</NuxtLink></li>
-        <li><NuxtLink :to="links.pageThree">PAGE 3</NuxtLink></li>
-        <li><NuxtLink :to="links.pageFour">PAGE 4</NuxtLink></li>
+        <li v-for="link of links" :key="link.title">
+          <NuxtLink :to="link.to">{{ link.title }}</NuxtLink>
+        </li>
       </ul>
     </nav>
   </div>
